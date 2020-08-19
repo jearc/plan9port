@@ -1293,6 +1293,12 @@ _xtoplan9mouse(Xwin *w, XEvent *e, Mouse *m)
 		case 5:
 			s |= Button5Mask;
 			break;
+		case 8:
+			s |= (1 << 13);
+			break;
+		case 9:
+			s |= (1 << 14);
+			break;
 		}
 		break;
 	case ButtonRelease:
@@ -1316,6 +1322,12 @@ _xtoplan9mouse(Xwin *w, XEvent *e, Mouse *m)
 			break;
 		case 5:
 			s &= ~Button5Mask;
+			break;
+		case 8:
+			s &= ~(1 << 13);
+			break;
+		case 9:
+			s &= ~(1 << 14);
 			break;
 		}
 		break;
@@ -1343,6 +1355,10 @@ _xtoplan9mouse(Xwin *w, XEvent *e, Mouse *m)
 		m->buttons |= 8;
 	if(s & Button5Mask)
 		m->buttons |= 16;
+	if(s & (1 << 13))
+		m->buttons |= 32;
+	if(s & (1 << 14))
+		m->buttons |= 64;
 	return 0;
 }
 
