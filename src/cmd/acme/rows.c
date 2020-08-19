@@ -333,7 +333,7 @@ rowdump(Row *row, char *file)
 			warning(nil, "can't find file for dump: $home not defined\n");
 			goto Rescue;
 		}
-		sprint(buf, "%s/acme.dump", home);
+		sprint(buf, "%s/acme.dump", wdir);
 		file = buf;
 	}
 	fd = create(file, OWRITE, 0600);
