@@ -1066,12 +1066,12 @@ textselect(Text *t)
 	while(mouse->buttons){
 		mouse->msec = 0;
 		b = mouse->buttons;
-		if((b&1) && (b&6)){
+		if((b&1) && (b&36)){
 			if(state==None && t->what==Body){
 				seq++;
 				filemark(t->w->body.file);
 			}
-			if(b & 2){
+			if(b & 32){
 				if(state==Paste && t->what==Body){
 					winundo(t->w, TRUE);
 					textsetselect(t, q0, t->q1);

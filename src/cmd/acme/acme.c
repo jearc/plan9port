@@ -596,7 +596,7 @@ mousethread(void *v)
 			but = 0;
 			if(m.buttons == 1)
 				but = 1;
-			else if(m.buttons == 2)
+			else if(m.buttons == 32)
 				but = 2;
 			else if(m.buttons == 4)
 				but = 3;
@@ -660,7 +660,7 @@ mousethread(void *v)
 						activecol = t->col;	/* button 1 only */
 					if(t->w!=nil && t==&t->w->body)
 						activewin = t->w;
-				}else if(m.buttons & 2){
+				}else if(m.buttons & 32){
 					if(textselect2(t, &q0, &q1, &argt))
 						execute(t, q0, q1, FALSE, argt);
 				}else if(m.buttons & 4){
